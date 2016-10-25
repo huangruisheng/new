@@ -59,6 +59,7 @@ public interface EntityDAO<T extends Entity> {
     public List<T> query(@Param("queryParams") List<CustomQueryParam> customQueryParams, @Param("sortList") List<Sort> sortList, @Param("start") Integer start, @Param("limit") Integer limit);
 
     @InsertProvider(type = BaseSQLProvider.class, method = "insert")
+    @Options(useGeneratedKeys = true)
     public int insert(T t);
 
     @DeleteProvider(type = BaseSQLProvider.class, method = "delete")
@@ -66,7 +67,4 @@ public interface EntityDAO<T extends Entity> {
 
     @UpdateProvider(type = BaseSQLProvider.class, method = "update")
     public int update(T t);
-
-    public int generateId();
-
 }

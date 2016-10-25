@@ -1,5 +1,6 @@
 package com.trusthiker.core.user.model;
 
+import com.trusthiker.common.db.model.Entity;
 import com.trusthiker.dto.user.*;
 import lombok.Data;
 
@@ -9,9 +10,7 @@ import java.util.Date;
  * Created by rui on 16/10/22.
  */
 @Data
-public class User {
-
-    private Long id; //id
+public class User extends Entity {
 
     private Long no;//平台号码
 
