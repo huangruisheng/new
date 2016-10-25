@@ -8,7 +8,6 @@ import com.trusthiker.common.db.dao.impl.mybatis.modelParser.ColumnTarget;
 import com.trusthiker.common.db.dao.impl.mybatis.modelParser.ModelUtils;
 import com.trusthiker.common.db.dao.impl.mybatis.modelParser.Property;
 import com.trusthiker.common.db.model.Entity;
-import com.trusthiker.common.db.model.EntityWithTime;
 import com.trusthiker.common.db.util.ReflectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
@@ -21,7 +20,6 @@ import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
-
 
 
 public class BaseSQLProvider<T extends Entity> {
@@ -112,18 +110,15 @@ public class BaseSQLProvider<T extends Entity> {
         initFromThreadLocal();
         // 设置默认值
         if (t.getId() == null) {
-            t.setId(UUID.randomUUID().toString());
-        }
-        if (t instanceof EntityWithTime) {
-            Date now = Calendar.getInstance().getTime();
-            if (((EntityWithTime) t).getCreateTime() == null) {
-                ((EntityWithTime) t).setCreateTime(now);
-            }
-            if (((EntityWithTime) t).getModifyTime() == null) {
-                ((EntityWithTime) t).setModifyTime(now);
-            }
-        }
 
+        }
+        Date now = Calendar.getInstance().getTime();
+        if (t.getCreateDt() == null) {
+            t.setCreateDt(now);
+        }
+        if (t.getUpdateDt() == null) {
+            t.setUpdateDt(now);
+        }
         return new SQL() {
             {
                 INSERT_INTO(tableName);
@@ -153,13 +148,9 @@ public class BaseSQLProvider<T extends Entity> {
 
     public String update(final T t) throws NoSuchFieldException, IllegalAccessException, InvocationTargetException {
         initFromThreadLocal();
-        if (t instanceof EntityWithTime) {
-            // 设置默认值
-            if (((EntityWithTime) t).getModifyTime() == null) {
-                ((EntityWithTime) t).setModifyTime(new Date());
-            }
+        if (t.getUpdateDt() == null) {
+            t.setUpdateDt(new Date());
         }
-
         return new SQL() {
             {
                 UPDATE(tableName);

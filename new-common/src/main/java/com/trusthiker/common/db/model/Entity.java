@@ -38,13 +38,13 @@ public abstract class Entity implements Serializable {
 
     private static final long serialVersionUID = 4212679023438415647L;
 
-    private Long id;
+    private Integer id;
 
     private String operator;
 
-    private Date createDateTime;
+    private Date createDt;
 
-    private Date updateDateTime;
+    private Date updateDt;
 
 
 }

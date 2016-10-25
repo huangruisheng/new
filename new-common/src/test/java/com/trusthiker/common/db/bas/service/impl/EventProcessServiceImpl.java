@@ -6,5 +6,6 @@ import com.trusthiker.common.db.service.EntityServiceImpl;
 import org.springframework.stereotype.Service;
 
 @Service
-public class EventProcessServiceImpl extends EntityServiceImpl<EventProcess> implements EventProcessService {
+public class EventProcessServiceImpl
+        extends EntityServiceImpl<EventProcess> implements EventProcessService {
 }

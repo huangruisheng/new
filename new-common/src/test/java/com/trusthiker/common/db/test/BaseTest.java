@@ -13,7 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
  * @author com.zdmoney.zdqd
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:/spring/applicationContext.xml", "classpath:/spring/applicationContext*.xml" })
+@ContextConfiguration(locations = { "classpath:/spring/applicationContext.xml",
+        "classpath:/spring/applicationContext*.xml" })
 @Transactional
 public abstract class BaseTest extends TestCase {
 

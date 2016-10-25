@@ -5,7 +5,7 @@
     <file url="file://$PROJECT_DIR$/new-common/src/main/resources/spring" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/new-common/src/test/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/new-common/src/test/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/new-core/src/main/resources/app-core.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/new-core/src/main/resources/spring/appContext.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/new-core/src/main/webapp/WEB-INF/web.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/new-core/src/main/webapp/index.jsp" charset="UTF-8" />
   </component>

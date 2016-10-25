@@ -3,16 +3,4 @@
 <mapper namespace="com.trusthiker.common.db.bas.dao.EventProcessDAO">
     <resultMap type="com.trusthiker.common.db.bas.model.EventProcess" id="getMap">
     </resultMap>
-    <sql id="queryColumns">
-        a.MODIFY_USER_CODE,
-        a.PROCESS_TYPE,
-        a.STEP_INTERVAL,
-        a.MODIFY_TIME,
-        a.CREATE_TIME,
-        a.PROCESS_SEQ,
-        a.EVENT_TYPE_ID,
-        a.ID,
-        a.STATUS,
-        a.CREATE_USER_CODE
-    </sql>
 </mapper>

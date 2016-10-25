@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -32,24 +33,16 @@ public class DaoTest extends BaseTest {
         statement.execute("DROP TABLE T_EVE_EVENT_PROCESS IF EXISTS;");
         statement.execute("create table T_EVE_EVENT_PROCESS \n" +
                 "(\n" +
-                "   ID                   VARCHAR2(50)         not null,\n" +
-                "   EVENT_TYPE_ID        VARCHAR2(50),\n" +
-                "   PROCESS_SEQ          NUMERIC(2),\n" +
-                "   PROCESS_TYPE         VARCHAR2(50),\n" +
-                "   CREATE_USER_CODE     VARCHAR2(50),\n" +
-                "   CREATE_TIME          TIMESTAMP,\n" +
-                "   MODIFY_USER_CODE     VARCHAR2(50),\n" +
-                "   MODIFY_TIME          TIMESTAMP,\n" +
-                "   STEP_INTERVAL        NUMERIC(8,2),\n" +
-                "   STATUS               VARCHAR2(50),\n" +
-                "   constraint PK_EVE_EVENT_PROCESS_ID primary key (ID)\n" +
+                "   ID                   INT(10)   AUTO_INCREMENT    not null,\n" +
+                "   CREATE_DT          TIMESTAMP,\n" +
+                "   UPDATE_DT          TIMESTAMP,\n" +
+                "   OPERATOR          VARCHAR(50)\n" +
                 ");");
         EventProcess eventProcess = new EventProcess();
-        eventProcess.setId("test");
-        eventProcess.setProcessType("test");
+        eventProcess.setCreateDt(new Date());
         eventProcessDAO.insert(eventProcess);
-        eventProcess.setId("test1");
-        eventProcess.setProcessType("test");
+        eventProcess.setCreateDt(new Date());
+        eventProcess.setUpdateDt(new Date());
         eventProcessDAO.insert(eventProcess);
     }
 
@@ -61,9 +54,6 @@ public class DaoTest extends BaseTest {
     @Test
     public void testGet() {
         EventProcess params = new EventProcess();
-        params.setProcessType("test");
-        params.setProcessSeq(111);
-        //logger.info(eventProcessDAO.get(params, null, 0, 1).toString());
         List<Sort> sortList = new ArrayList<Sort>();
         sortList.add(new Sort("id"));
         sortList.add(new Sort("processSeq"));
@@ -73,17 +63,6 @@ public class DaoTest extends BaseTest {
         logger.info(eventProcessDAO.get(params, sortList, 0, 2).toString());
     }
 
-
-    public static void main(String[] args) {
-        Integer i = new Integer(1);
-        Integer j = 1;
-        if(i==j){
-            System.out.println("============");
-        }else {
-            System.out.println("11111111111");
-        }
-
-    }
 
 
 
