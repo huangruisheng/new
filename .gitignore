@@ -12,4 +12,4 @@ gen
 build
 build/*
 .gradle
-*/.gradle
+.gradle/*/*
