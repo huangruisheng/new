@@ -6,7 +6,10 @@
 .idea
 .idea/
 *.iml
+*/*.iml
 out
 gen
 build
 build/*
+.gradle
+*/.gradle
