@@ -1,0 +1,22 @@
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    compile project(":new-dto")
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.16.10'
+    compile group: 'com.weibo', name: 'motan', version: '0.2.1'
+    compile group: 'com.weibo', name: 'motan-core', version: '0.2.1'
+    compile group: 'com.weibo', name: 'motan-springsupport', version: '0.2.1'
+    compile group: 'com.weibo', name: 'motan-registry-zookeeper', version: '0.2.1'
+    compile group: 'com.weibo', name: 'motan-transport-netty', version: '0.2.1'
+    compile group: 'com.weibo', name: 'motan-extension', version: '0.2.1'
+}

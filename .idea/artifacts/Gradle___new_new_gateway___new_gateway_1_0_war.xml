@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Gradle : new:new-gateway : new-gateway-1.0.war">
+    <output-path>$PROJECT_DIR$/out/artifacts/new-gateway</output-path>
+    <properties id="gradle-properties">
+      <options external-project-path="$PROJECT_DIR$/new-gateway" />
+    </properties>
+    <root id="archive" name="new-gateway-1.0.war">
+      <element id="javaee-facet-resources" facet="new-gateway/web/Web Gradle : new-gateway-1.0.war" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="new-gateway" />
+          <element id="dir-copy" path="$PROJECT_DIR$/new-gateway/build/resources/main" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/out/artifacts/new-gateway/exploded/new-gateway-1.0.war/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>
