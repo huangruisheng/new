@@ -4,6 +4,7 @@ import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.TransactionDbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.trusthiker.core.user.model.City;
+import com.trusthiker.dto.user.CityStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.dbunit.DataSourceBasedDBTestCase;
 import org.dbunit.dataset.IDataSet;
@@ -18,6 +19,8 @@ import org.springframework.test.context.support.DirtiesContextTestExecutionListe
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.sql.DataSource;
+
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -37,7 +40,46 @@ public class CityServiceTest {
     @Test
     @DatabaseSetup("CitySampleData.xml")
     public void testGet() throws Exception {
-        City city = cityService.get(0);
-        assertNotNull(city);
+        List<City> cities = cityService.getAll();
+        assertNotNull(cities);
+        assertEquals(1, cities.size());
+    }
+
+    @Test
+    @DatabaseSetup("CitySampleData.xml")
+    public void testGetAll() throws Exception {
+        List<City> cities = cityService.getAll();
+        assertNotNull(cities);
+        assertEquals(1, cities.size());
+        City city = cityService.get(cities.get(0).getId());
+        assertEquals("上海", city.getName());
+    }
+
+    @Test
+    public void testAdd() throws Exception {
+        City city = new City();
+        city.setCode(10001);
+        city.setName("上海");
+        city.setPinyin("shanghai");
+        city.setStatus(CityStatus.ENABLE);
+        city.setOperator("SYSTEM");
+        city = cityService.add(city);
+        Integer id = city.getId();
+        assertNotNull(id);
+        city = cityService.get(id);
+        assertEquals("上海", city.getName());
+    }
+
+
+    @Test
+    @DatabaseSetup("CitySampleData.xml")
+    public void testUpdate() throws Exception {
+        List<City> cities = cityService.getAll();
+        City city = cities.get(0);
+        Integer id = city.getId();
+        city.setName("上海1");
+        cityService.update(city);
+        city = cityService.get(id);
+        assertEquals("上海1", city.getName());
     }
 }

@@ -47,7 +47,6 @@
     <orderEntry type="library" name="Gradle: com.101tec:zkclient:0.3" level="project" />
     <orderEntry type="library" name="Gradle: org.jboss.netty:netty:3.2.5.Final" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-core:4.3.3.RELEASE" level="project" />
-    <orderEntry type="library" name="Gradle: org.mybatis:mybatis:3.4.1" level="project" />
     <orderEntry type="library" name="Gradle: org.mybatis:mybatis-spring:1.3.0" level="project" />
     <orderEntry type="library" name="Gradle: org.mybatis.generator:mybatis-generator-core:1.3.5" level="project" />
     <orderEntry type="module" module-name="new-common" />
@@ -85,6 +84,7 @@
     <orderEntry type="library" scope="TEST" name="Gradle: commons-codec:commons-codec:1.10" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: commons-collections:commons-collections:3.2.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.apache.poi:poi-ooxml:3.14" level="project" />
-    <orderEntry type="library" name="Gradle: mysql:mysql-connector-java:6.0.4" level="project" />
+    <orderEntry type="library" name="Gradle: mysql:mysql-connector-java:5.1.35" level="project" />
+    <orderEntry type="library" name="Gradle: org.mybatis:mybatis:3.4.1" level="project" />
   </component>
 </module>

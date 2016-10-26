@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by rui on 16/10/25.
  */
@@ -22,5 +24,22 @@ public class CityServiceImpl extends EntityServiceImpl<City> implements CityServ
     @Override
     public City get(Integer id) {
         return cityDao.getById(id);
+    }
+
+
+    @Override
+    public List<City> getAll() {
+        return cityDao.getAll();
+    }
+
+    @Override
+    public City add(City city) {
+        cityDao.insert(city);
+        return city;
+    }
+
+    @Override
+    public void update(City city) {
+        cityDao.update(city);
     }
 }
