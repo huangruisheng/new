@@ -14,3 +14,6 @@ build
 build/*
 .gradle
 .gradle/*/*
+gradlew.bat
+gradlew
+gradle
