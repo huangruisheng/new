@@ -29,7 +29,6 @@ import org.apache.ibatis.mapping.Environment;
 import org.apache.ibatis.parsing.XNode;
 import org.apache.ibatis.parsing.XPathParser;
 import org.apache.ibatis.plugin.Interceptor;
-import org.apache.ibatis.reflection.DefaultReflectorFactory;
 import org.apache.ibatis.reflection.MetaClass;
 import org.apache.ibatis.reflection.factory.ObjectFactory;
 import org.apache.ibatis.reflection.wrapper.ObjectWrapperFactory;
@@ -199,7 +198,7 @@ public class XMLConfigBuilder extends BaseBuilder {
     if (context != null) {
       Properties props = context.getChildrenAsProperties();
       // Check that all settings are known to the configuration class
-      MetaClass metaConfig = MetaClass.forClass(Configuration.class,new DefaultReflectorFactory());
+      MetaClass metaConfig = MetaClass.forClass(Configuration.class);
       for (Object key : props.keySet()) {
         if (!metaConfig.hasSetter(String.valueOf(key))) {
           throw new BuilderException("The setting " + key + " is not known.  Make sure you spelled it correctly (case sensitive).");
@@ -224,7 +223,7 @@ public class XMLConfigBuilder extends BaseBuilder {
       configuration.setDefaultScriptingLanguage(resolveClass(props.getProperty("defaultScriptingLanguage")));
       configuration.setCallSettersOnNulls(booleanValueOf(props.getProperty("callSettersOnNulls"), false));
       configuration.setLogPrefix(props.getProperty("logPrefix"));
-      configuration.setLogImpl((Class<? extends Log>) resolveClass(props.getProperty("logImpl")));
+      configuration.setLogImpl(resolveClass(props.getProperty("logImpl")));
       configuration.setConfigurationFactory(resolveClass(props.getProperty("configurationFactory")));
     }
   }

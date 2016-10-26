@@ -11,7 +11,8 @@
 
     <context:property-placeholder location="classpath:config/core.properties"/>
 
-    <context:component-scan base-package="com.trusthiker"/>
+    <context:component-scan base-package="com.trusthiker.core"/>
+    <context:component-scan base-package="com.trusthiker.common.db"/>
 
     <!--通过注解自动获取配置值-->
     <context:annotation-config/>

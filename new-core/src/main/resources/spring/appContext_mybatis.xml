@@ -12,7 +12,7 @@
     </bean>
 
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-        <property name="filters" value="config,wall,stat"/>
+        <!--<property name="filters" value="config,wall,stat"/>-->
         <property name="url" value="${jdbc.url}"/>
         <property name="username" value="${jdbc.username}"/>
         <property name="password" value="${jdbc.password}"/>

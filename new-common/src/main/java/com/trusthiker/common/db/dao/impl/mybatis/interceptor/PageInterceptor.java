@@ -7,7 +7,6 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.plugin.*;
-import org.apache.ibatis.reflection.DefaultReflectorFactory;
 import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.reflection.factory.DefaultObjectFactory;
 import org.apache.ibatis.reflection.wrapper.DefaultObjectWrapperFactory;
@@ -22,7 +21,7 @@ import java.util.Properties;
  * Created by unknown
  * Modify by com.trusthiker.common
  */
-@Intercepts({@Signature(type = StatementHandler.class, method = "prepare", args = {Connection.class, Integer.class})})
+@Intercepts({@Signature(type = StatementHandler.class, method = "prepare", args = {Connection.class})})
 public class PageInterceptor implements Interceptor {
 
     protected final Log logger = LogFactory.getLog(getClass());
@@ -31,7 +30,7 @@ public class PageInterceptor implements Interceptor {
     public Object intercept(Invocation invocation) throws Throwable {
         StatementHandler statementHandler = (StatementHandler) invocation.getTarget();
         BoundSql boundSql = statementHandler.getBoundSql();
-        MetaObject metaStatementHandler = MetaObject.forObject(statementHandler, new DefaultObjectFactory(), new DefaultObjectWrapperFactory(), new DefaultReflectorFactory());
+        MetaObject metaStatementHandler = MetaObject.forObject(statementHandler, new DefaultObjectFactory(), new DefaultObjectWrapperFactory());
         RowBounds rowBounds = (RowBounds) metaStatementHandler.getValue("delegate.rowBounds");
         if ((rowBounds != null) && (rowBounds != RowBounds.DEFAULT)) {
             Configuration configuration = (Configuration) metaStatementHandler.getValue("delegate.configuration");

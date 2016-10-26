@@ -5,7 +5,7 @@ package com.trusthiker.dto.user;
  */
 public enum CityStatus {
 
-    ON(1), OFF(0);
+    ENABLE(1), DISABLE(0);
 
     private int value;
 

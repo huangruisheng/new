@@ -10,7 +10,6 @@ import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.plugin.*;
-import org.apache.ibatis.reflection.DefaultReflectorFactory;
 import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.reflection.factory.DefaultObjectFactory;
 import org.apache.ibatis.reflection.wrapper.DefaultObjectWrapperFactory;
@@ -57,7 +56,7 @@ public class SortListInterceptor implements Interceptor {
 
         // 计算修改BoundSql
         BoundSql boundSql = ms.getBoundSql(parameter);
-        MetaObject boundSqlHandler = MetaObject.forObject(boundSql, new DefaultObjectFactory(), new DefaultObjectWrapperFactory(),new DefaultReflectorFactory());
+        MetaObject boundSqlHandler = MetaObject.forObject(boundSql, new DefaultObjectFactory(), new DefaultObjectWrapperFactory());
         Dialect dialect = DialectParser.parse(ms.getConfiguration());
         String sql = (String) boundSqlHandler.getValue("sql");
         sql = dialect.addSortString(sql, sortList);
