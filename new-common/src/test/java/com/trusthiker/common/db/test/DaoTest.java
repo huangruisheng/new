@@ -1,7 +1,7 @@
 package com.trusthiker.common.db.test;
 
-import com.trusthiker.common.db.bas.model.EventProcess;
 import com.trusthiker.common.db.bas.dao.EventProcessDAO;
+import com.trusthiker.common.db.bas.model.EventProcess;
 import com.trusthiker.common.db.dao.complexQuery.Sort;
 import org.junit.Before;
 import org.junit.Test;

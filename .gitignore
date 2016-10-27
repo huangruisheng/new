@@ -8,12 +8,4 @@
 .idea/*
 *.iml
 */*.iml
-out
-gen
-build
-build/*
-.gradle
-.gradle/*/*
-gradlew.bat
-gradlew
-gradle
+target

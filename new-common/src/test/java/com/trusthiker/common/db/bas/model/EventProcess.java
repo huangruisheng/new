@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.Table;
-import java.util.Date;
 
 @Data
 @Table(name = "T_EVE_EVENT_PROCESS")

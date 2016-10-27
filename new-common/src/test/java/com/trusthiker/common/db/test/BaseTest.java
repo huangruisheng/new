@@ -1,7 +1,6 @@
 package com.trusthiker.common.db.test;
 
 import junit.framework.TestCase;
-
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

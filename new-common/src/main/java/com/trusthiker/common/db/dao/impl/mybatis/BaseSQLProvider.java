@@ -19,7 +19,10 @@ import javax.persistence.Table;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 
 public class BaseSQLProvider<T extends Entity> {
