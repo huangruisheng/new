@@ -6,23 +6,23 @@ import com.weibo.api.motan.config.springsupport.BasicServiceConfigBean;
 import com.weibo.api.motan.config.springsupport.ProtocolConfigBean;
 import com.weibo.api.motan.config.springsupport.RegistryConfigBean;
 import com.weibo.api.motan.util.MotanSwitcherUtil;
-import org.springframework.context.ApplicationContext;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.ImportResource;
 
 /**
  * Created by rui on 16/10/22.
  */
 
-@Configuration
-public class Bootstrap {
+@SpringBootApplication
+@ImportResource(locations = "classpath*:/spring/appContext.xml")
+public class Application {
 
 
     public static void main(String[] args) throws Exception {
-        System.setProperty("server.port", "8081");
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext(new
-                String[]{"classpath*:app-core.xml"});
+        ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
         MotanSwitcherUtil.setSwitcherValue(MotanConstants.REGISTRY_HEARTBEAT_SWITCHER, true);
         System.out.println("server start...");
     }
@@ -62,9 +62,6 @@ public class Bootstrap {
         config.setRegistry("registryConfig1");
         return config;
     }
-
-
-
 
 
 }
